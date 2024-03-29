@@ -1,10 +1,12 @@
 page 50000 Room
 {
     AdditionalSearchTerms = 'keys, chambre, zimmer';
-    Caption = 'Room';
+    Caption = 'Room List';
+    PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Room;
+    CardPageId = RoomCard;
     Editable = false;
 
     PromotedActionCategories = 'New,Process,Report,Category';
@@ -13,25 +15,28 @@ page 50000 Room
     {
         area(Content)
         {
-            field(RoomNo; Rec.RoomNo)
+            repeater(Rec)
             {
-
-            }
-            field(RoomName; Rec.RoomName)
-            {
-
-            }
-            field(Status; Rec.Status)
-            {
-
-            }
-            field(Type; Rec.Type)
-            {
-
-            }
-            field(Smoking; Rec.Smoking)
-            {
-
+                field(RoomNo; Rec.RoomNo)
+                {
+                    ApplicationArea = All;
+                }
+                field(RoomName; Rec.RoomName)
+                {
+                    ApplicationArea = All;
+                }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = All;
+                }
+                field(Type; Rec.Type)
+                {
+                    ApplicationArea = All;
+                }
+                field(Smoking; Rec.Smoking)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
