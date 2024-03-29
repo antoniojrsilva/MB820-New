@@ -5,11 +5,11 @@ table 50000 Room
 
     fields
     {
-        field(50000; RoomNo; Code[20])
+        field(50000; "No."; Code[20])
         {
             Caption = 'Room No';
         }
-        field(50010; RoomName; Text[50])
+        field(50010; Name; Text[50])
         {
             Caption = 'Room Name';
         }
@@ -38,7 +38,7 @@ table 50000 Room
 
     keys
     {
-        key(PK; RoomNo)
+        key(PK; "No.")
         {
             Clustered = true;
         }

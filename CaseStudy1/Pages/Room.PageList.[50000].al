@@ -17,11 +17,11 @@ page 50000 Room
         {
             repeater(Rec)
             {
-                field(RoomNo; Rec.RoomNo)
+                field(RoomNo; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field(RoomName; Rec.RoomName)
+                field(RoomName; Rec.Name)
                 {
                     ApplicationArea = All;
                 }
