@@ -1,6 +1,7 @@
 table 50003 NoConformitiesHeader
 {
     Caption = 'No Conformities Header';
+    DataCaptionFields = "No.";
     DataClassification = ToBeClassified;
 
     fields
@@ -40,6 +41,7 @@ table 50003 NoConformitiesHeader
         field(50008; Status; Enum NoConformityStatus)
         {
             Caption = 'Status';
+            InitValue = Open;
         }
     }
     keys
@@ -49,4 +51,25 @@ table 50003 NoConformitiesHeader
             Clustered = true;
         }
     }
+
+    procedure AssistEdit(OldNoConformityHeader: Record NoConformitiesHeader) Result: Boolean
+    var
+        NoConformitiesHeader: Record NoConformitiesHeader;
+        NoSeries: Codeunit "No. Series";
+        InventorySetup: Record "Inventory Setup";
+        IsHandled: Boolean;
+        NoSerieChoose: Code[20];
+    begin
+        IsHandled := false;
+        //TODO: OnBeforeAssistEdit(Rec, OldNoConformityHeader, IsHandled)
+        If IsHandled then
+            exit;
+        NoConformitiesHeader.Copy(Rec);
+        InventorySetup.Get();
+        NoSeries.LookupRelatedNoSeries(InventorySetup.NoConformitiesSeries, InventorySetup.NoConformitiesSeries, NoSerieChoose);
+        NoConformitiesHeader."No." := NoSeries.GetNextNo(NoSerieChoose);
+        Rec := NoConformitiesHeader;
+        //TODO: OnAfterAssistEdit(Rec, OldNoConformityHeader, IsHandled)
+        exit(true);
+    end;
 }
