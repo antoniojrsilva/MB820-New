@@ -54,6 +54,19 @@ page 50007 "No Conformities Document Page"
                 ApplicationArea = All;
                 SubPageLink = "No." = field("No.");
             }
+            group(Comment)
+            {
+                field(Comments; PageComments)
+                {
+                    ExtendedDatatype = RichContent;
+                    MultiLine = true;
+
+                    trigger OnValidate()
+                    begin
+                        Rec.SaveRichText(PageComments);
+                    end;
+                }
+            }
         }
     }
 
@@ -63,4 +76,13 @@ page 50007 "No Conformities Document Page"
         {
         }
     }
+
+    trigger OnAfterGetRecord()
+    begin
+        PageComments := Rec.GetRichText();
+    end;
+
+    var
+        PageComments: Text;
+
 }

@@ -43,6 +43,10 @@ table 50003 NoConformitiesHeader
             Caption = 'Status';
             InitValue = Open;
         }
+        field(50009; Comments; Blob)
+        {
+            Caption = 'Comments';
+        }
     }
     keys
     {
@@ -71,5 +75,25 @@ table 50003 NoConformitiesHeader
         Rec := NoConformitiesHeader;
         //TODO: OnAfterAssistEdit(Rec, OldNoConformityHeader, IsHandled)
         exit(true);
+    end;
+
+    procedure GetRichText(): Text
+    var
+        IStream: InStream;
+        TextValue: Text;
+    begin
+        Rec.CalcFields(Rec.Comments);
+        Rec.Comments.CreateInStream(IStream);
+        IStream.ReadText(TextValue);
+        exit(TextValue)
+    end;
+
+    procedure SaveRichText(RichText: Text)
+    var
+        OStream: OutStream;
+    begin
+        Rec.Comments.CreateOutStream(OStream);
+        OStream.WriteText(RichText);
+        Rec.Modify();
     end;
 }

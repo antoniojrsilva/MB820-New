@@ -1,4 +1,4 @@
-page 50003 ToDoAssistedSetup
+page 50003 "Install Wizard"
 {
     PageType = NavigatePage;
     SourceTable = Integer;
