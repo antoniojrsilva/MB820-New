@@ -2,19 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Microsoft cloud sandbox",
+            "name": "Your own server",
             "request": "launch",
             "type": "al",
-            "environmentType": "Sandbox",
-            "environmentName": "MB820",
+            "environmentType": "OnPrem",
+            "server": "http://automation",
+            "startupCompany": "CRONUS UK Ltd.",
+            "serverInstance": "BC",
+            "authentication": "UserPassword",
             "startupObjectId": 50009,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
-            "tenant": "7e3e06be-cc7a-466a-82cf-a126d0d1afb3",
-            "schemaUpdateMode": "ForceSync"
+            "tenant": "default",
+            "usePublicURLFromServer": true
         }
     ]
 }

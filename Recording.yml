@@ -1,0 +1,48 @@
+name: Recording
+description: Test recording
+start:
+  profile: BUSINESS MANAGER
+steps:
+  - type: invoke
+    target:
+      - page: Customer Card
+        runtimeRef: bck
+      - action: Control_New
+    invokeType: New
+    description: Invoke New on <caption>New</caption>
+  - type: page-shown
+    source:
+      page: Select Customer Templ. List
+    modal: true
+    runtimeId: bxc
+    description: Page <caption>Select a template for a new customer</caption> was shown.
+  - type: invoke
+    target:
+      - page: Select Customer Templ. List
+        runtimeRef: bxc
+    invokeType: LookupOk
+    description: Invoke LookupOk on <caption>Select a template for a new customer</caption>
+  - type: page-closed
+    source:
+      page: Select Customer Templ. List
+    runtimeId: bxc
+    description: Page <caption>Select a template for a new customer</caption> was closed.
+  - type: page-shown
+    source:
+      page: Customer Card
+    modal: false
+    runtimeId: byf
+    description: Page <caption>New - Customer Card</caption> was shown.
+  - type: input
+    target:
+      - page: Customer Card
+        runtimeRef: byf
+      - field: Name
+    value: Antonio da Silva
+    description: Input <value>Antonio da Silva</value> into <caption>Name</caption>
+  - type: focus
+    target:
+      - page: Customer Card
+        runtimeRef: byf
+      - field: Balance (LCY)
+    description: Focus <caption>Balance (LCY)</caption>
