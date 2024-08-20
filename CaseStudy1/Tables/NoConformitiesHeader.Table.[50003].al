@@ -74,6 +74,7 @@ table 50003 NoConformitiesHeader
         NoConformitiesHeader."No." := NoSeries.GetNextNo(NoSerieChoose);
         Rec := NoConformitiesHeader;
         //TODO: OnAfterAssistEdit(Rec, OldNoConformityHeader, IsHandled)
+        Modify(true);
         exit(true);
     end;
 

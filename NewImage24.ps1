@@ -6,8 +6,8 @@ $password = 'Constancia6730'
 $securePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
 $credential = New-Object pscredential 'antonio', $securePassword
 $auth = 'UserPassword'
-$artifactUrl = Get-BcArtifactUrl -type 'Sandbox' -country 'gb' -select 'Latest'  
-$licenseFileUri = 'C:\repos\TNPBC.bclicense'
+$artifactUrl = Get-BcArtifactUrl -type 'Sandbox' -country 'gb' -version 23 -select Latest  
+$licenseFileUri = 'C:\Users\anton\OneDrive\Documents\Training\MB-820\FS51005_BC23 6779587.bclicense'
 $isolation = 'hyperv'
 
 #Publish Minimal Ports - normal and SSL
@@ -22,6 +22,7 @@ New-BcContainer `
     -containerName $containerName `
     -credential $credential `
     -auth $auth `
+    -licenseFile $licenseFileUri `
     -artifactUrl $artifactUrl `
     -imageName $containerName `
     -multitenant:$false `
